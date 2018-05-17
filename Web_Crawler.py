@@ -25,8 +25,6 @@ CLEAN_RE = re.compile('\W+')
 def get_site(url):
     return urlsplit(url).netloc
 
-
-
 ###############################
 ## WORKING WITH HTML CONTENT ##
 ###############################
@@ -59,8 +57,6 @@ def extract_urls(contenido, baseurl):
 def extract_text(content):
     return CLEAN_RE.sub(' ', content.text).lower()
 
-
-
 ############################
 ## WORKING WITH THE INDEX ##
 ############################
@@ -76,7 +72,6 @@ def add_processed_url(url_dic, url):
         int: dictionary url key
 
     """
-    
     hs_url = hash(url)
     url_dic[hs_url] = url
     
@@ -91,9 +86,7 @@ def get_next_url(url_queue):
     Returns:
         text: url
 
-    """
-    
-    
+    """ 
     url_data = url_queue.pop()
     return url_data
     
@@ -146,8 +139,6 @@ def add_to_index(index, urlid, text):
         local_count += 1
     return local_count
   
-  
-
 def get_posting(index, dic, term):
     """Returns a list of url where the terms appears
 
@@ -159,9 +150,7 @@ def get_posting(index, dic, term):
         Returns:
             list: list of url , None if the term does not exist in the inverted index
     """
-    
     final_list = []
-    
     try:
       url_list = index[term]
     except:
@@ -172,11 +161,9 @@ def get_posting(index, dic, term):
       
     return final_list
 
-
 ###############
 ## SHOW INFO ##
 ###############
-
 
 def info(index, processed, pending):
     print("\n====\nINFO\n====")
